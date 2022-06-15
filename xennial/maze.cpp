@@ -128,11 +128,11 @@ void solve() {
     }
     maze_file.close();
 
-
     bool success = false;
     Cell start = {1, 1};
     Cell target = {124, 117};
 
+    // BFS to target
     queue<Cell> frontier;
     frontier.push(start);
     unordered_map<Cell, Cell, Cell::hash_func> came_from;
@@ -159,7 +159,6 @@ void solve() {
                 came_from[cell] = current;
             }
         }
-
     }
 
     if (!success) {
@@ -175,9 +174,6 @@ void solve() {
     Cell previous;
 
     while (current != start) {
-        // TODO:
-        // get direction based on current and next
-        // add direction to list to be output to file
         previous = came_from[current];
 
         if (current.x == previous.x)
